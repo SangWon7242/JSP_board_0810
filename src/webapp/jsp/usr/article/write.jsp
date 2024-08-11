@@ -2,7 +2,29 @@
 
 <h1>게시물 작성</h1>
 
-<form>
+<script>
+  function ArticleSave__submitForm(form) {
+    form.subject.value = form.subject.value.trim();
+
+    if(form.subject.value.length == 0) {
+      alert('제목을 입력해주세요.');
+      form.subject.focus();
+      return;
+    }
+
+    form.subject.value = form.subject.value.trim();
+
+    if(form.content.value.length == 0) {
+      alert('내용을 입력해주세요.');
+      form.content.focus();
+      return;
+    }
+
+    form.submit();
+  }
+</script>
+
+<form onsubmit="ArticleSave__submitForm(this); return false;">
   <div>
     <span>제목</span>
     <div>
@@ -13,7 +35,7 @@
   <div>
     <span>내용</span>
     <div>
-      <textarea name="content" placeholder="내용을 입력해주세요."></textarea>
+      <textarea name="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
     </div>
   </div>
 
