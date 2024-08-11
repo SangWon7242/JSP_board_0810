@@ -1,5 +1,6 @@
 package sbs.com.jsp.board.servlet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +26,6 @@ public class DispatcherServlet extends HttpServlet {
     // http://localhost:8080/usr/article/list
     // /usr/article/list 부분만 가져온다.
     String url = req.getRequestURI();
-    System.out.println(url);
 
     switch (url) {
       case "/usr/article/list" -> articleController.showList(rq);
