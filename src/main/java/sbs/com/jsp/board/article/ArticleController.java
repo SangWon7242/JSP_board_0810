@@ -31,4 +31,23 @@ public class ArticleController {
   public void showWrite(Rq rq) {
     rq.view("usr/article/write");
   }
+
+  public void doWrite(Rq rq) {
+    String subject = rq.getParam("subject", "");
+
+    if(subject.trim().isEmpty()) {
+      System.out.println("제목을 입력해주세요.");
+      return;
+    }
+
+    String content = rq.getParam("content", "");
+
+    if(content.trim().isEmpty()) {
+      System.out.println("내용을 입력해주세요.");
+      return;
+    }
+
+    rq.appendBody("<div>subject : %s</div>\n".formatted(subject));
+    rq.appendBody("<div>content : %s</div>\n".formatted(content));
+  }
 }
