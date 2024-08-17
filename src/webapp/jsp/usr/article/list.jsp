@@ -19,7 +19,7 @@ List<Article> articles = (List<Article>) request.getAttribute("articles");
             <span>
                 <%=article.getId()%>번 :
             </span>
-            <a href="/usr/article/detail?id=<%=article.getId()%>">
+            <a href="/usr/article/detail/free/<%=article.getId()%>">
                 <%= article.getSubject()%>
             </a>
         </li>

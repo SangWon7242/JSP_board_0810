@@ -35,7 +35,7 @@ public class ArticleRepository {
     return id;
   }
 
-  public Article findById(int id) {
+  public Article findById(long id) {
     for(Article article : datum) {
       if(article.getId() == id) {
         return article;

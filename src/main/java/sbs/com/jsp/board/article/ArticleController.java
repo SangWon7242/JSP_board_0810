@@ -51,7 +51,7 @@ public class ArticleController {
   }
 
   public void showDetail(Rq rq) {
-    int id = rq.getIntParam("id", 0);
+    long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
       rq.appendBody("올바른 요청이 아닙니다.");
