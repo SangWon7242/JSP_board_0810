@@ -11,6 +11,7 @@ import sbs.com.jsp.board.article.ArticleController;
 import sbs.com.jsp.board.container.Container;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebServlet("/usr/*")
 public class DispatcherServlet extends HttpServlet {
@@ -23,14 +24,14 @@ public class DispatcherServlet extends HttpServlet {
 
     switch (rq.getMethod()) {
       case "GET" -> {
-        switch (rq.getUrlPath()) {
+        switch (rq.getActionPath()) {
           case "/usr/article/list" -> articleController.showList(rq);
           case "/usr/article/write" -> articleController.showWrite(rq);
           case "/usr/member/join" -> memberController.showJoin(rq);
         }
       }
       case "POST" -> {
-        switch (rq.getUrlPath()) {
+        switch (rq.getActionPath()) {
           case "/usr/article/write" -> articleController.doWrite(rq);
         }
       }
