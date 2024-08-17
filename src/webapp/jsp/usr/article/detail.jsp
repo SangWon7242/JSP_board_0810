@@ -21,3 +21,7 @@ Article article = (Article) request.getAttribute("article");
     </div>
   <% } %>
 </div>
+
+<div>
+  <a href="/usr/article/list">리스트로 이동</a>
+</div>

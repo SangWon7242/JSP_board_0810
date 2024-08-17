@@ -15,6 +15,13 @@ List<Article> articles = (List<Article>) request.getAttribute("articles");
 <ul>
     <% for(int i = articles.size() - 1; i >= 0; i--) {%>
         <% Article article = articles.get(i); %>
-        <li><%= article.getId()%>번 : <%= article.getSubject()%></li>
+        <li>
+            <span>
+                <%=article.getId()%>번 :
+            </span>
+            <a href="/usr/article/detail?id=<%=article.getId()%>">
+                <%= article.getSubject()%>
+            </a>
+        </li>
     <% } %>
 </ul>
