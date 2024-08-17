@@ -1,27 +1,24 @@
 package sbs.com.jsp.board.article;
 
 import sbs.com.jsp.board.Rq;
+import sbs.com.jsp.board.container.Container;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class ArticleController {
+  private ArticleService articleService;
+
+  public ArticleController() {
+    articleService = Container.articleService;
+  }
+
   public void showList(Rq rq) {
-    List<Article> articleList = new ArrayList<>();
+    List<Article> articleList = articleService.getArticles();
 
-    // 테스트 게시물 생성
-    /*
-    for(int i = 5; i >= 1; i--) {
-      articleList.add(new Article(i, "제목" + i, "내용" + i);
+    if(articleList.isEmpty()) {
+      rq.appendBody("게시물이 존재하지 않습니다.");
+      return;
     }
-     */
-
-    IntStream.rangeClosed(1, 5)
-        .map(i -> 6 - i) // 5, 4, 3, 2, 1로 매핑
-        .forEach(i -> articleList.add(new Article(i, "제목" + i, "내용" + i))
-        );
-
 
     rq.setAttr("articles", articleList);
 
@@ -47,7 +44,8 @@ public class ArticleController {
       return;
     }
 
-    rq.appendBody("<div>subject : %s</div>\n".formatted(subject));
-    rq.appendBody("<div>content : %s</div>\n".formatted(content));
+    long id = articleService.write(subject, content);
+
+    rq.appendBody("<div>%d번 게시물이 등록되었습니다.</div>\n".formatted(id));
   }
 }

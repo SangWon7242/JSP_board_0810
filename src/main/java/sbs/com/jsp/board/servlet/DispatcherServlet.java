@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import sbs.com.jsp.board.Member.MemberController;
+import sbs.com.jsp.board.member.MemberController;
 import sbs.com.jsp.board.Rq;
 import sbs.com.jsp.board.article.ArticleController;
 import sbs.com.jsp.board.container.Container;
@@ -19,7 +19,7 @@ public class DispatcherServlet extends HttpServlet {
     Rq rq = new Rq(req, resp);
 
     MemberController memberController = Container.memberController;
-    ArticleController articleController = Container.articleContrller;
+    ArticleController articleController = Container.articleController;
 
     switch (rq.getMethod()) {
       case "GET" -> {
