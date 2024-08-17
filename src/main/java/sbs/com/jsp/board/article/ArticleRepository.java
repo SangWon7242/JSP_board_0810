@@ -10,22 +10,25 @@ public class ArticleRepository {
 
   static {
     datum = new ArrayList<>();
-    makeTestData();
+    lastId = 0;
 
-    lastId = datum.get(datum.size() - 1).getId(); // 게시물의 마지막 번호
+    makeTestData();
   }
 
   public static void makeTestData() {
-    IntStream.rangeClosed(1, 5)
-        .forEach(i -> datum.add(new Article(i, "제목" + i, "내용" + i))
-        );
+    IntStream.rangeClosed(1, 10).forEach(id -> {
+      String subject = "제목%d".formatted(id);
+      String content = "내용%d".formatted(id);
+
+      write(subject, content);
+    });
   }
 
-  public List<Article> findAll() {
+  public static List<Article> findAll() {
     return datum;
   }
 
-  public long write(String subject, String content) {
+  public static long write(String subject, String content) {
     long id = ++lastId;
 
     Article article = new Article(id, subject, content);
@@ -35,7 +38,7 @@ public class ArticleRepository {
     return id;
   }
 
-  public Article findById(long id) {
+  public static Article findById(long id) {
     for(Article article : datum) {
       if(article.getId() == id) {
         return article;
