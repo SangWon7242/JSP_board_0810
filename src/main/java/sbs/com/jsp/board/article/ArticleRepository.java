@@ -21,7 +21,7 @@ public class ArticleRepository {
         );
   }
 
-  public List<Article> getArticles() {
+  public List<Article> findAll() {
     return datum;
   }
 
@@ -33,5 +33,15 @@ public class ArticleRepository {
     datum.add(article);
 
     return id;
+  }
+
+  public Article findById(int id) {
+    for(Article article : datum) {
+      if(article.getId() == id) {
+        return article;
+      }
+    }
+
+    return null;
   }
 }
