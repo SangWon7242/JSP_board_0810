@@ -86,7 +86,12 @@ public class ArticleController {
 
     articleService.delete(id);
 
-    rq.appendBody("%d번 게시물이 삭제되었습니다.".formatted(id));
+    rq.appendBody("""
+            <script>
+              alert('%d번 게시물이 삭제되었습니다.');
+            </script>
+            """.formatted(id));
+    
     rq.appendBody("""
             <div>
              <a href="/usr/article/list/free">리스트로 이동</a>
@@ -112,5 +117,37 @@ public class ArticleController {
     rq.setAttr("article", article);
 
     rq.view("usr/article/modify");
+  }
+
+  public void doModify(Rq rq) {
+    long id = rq.getLongPathValueByIndex(1, 0);
+
+    String subject = rq.getParam("subject", "");
+
+    if(subject.trim().isEmpty()) {
+      System.out.println("제목을 입력해주세요.");
+      return;
+    }
+
+    String content = rq.getParam("content", "");
+
+    if(content.trim().isEmpty()) {
+      System.out.println("내용을 입력해주세요.");
+      return;
+    }
+
+    articleService.modify(id, subject, content);
+
+    rq.appendBody("""
+            <script>
+              alert('%d번 게시물이 수정되었습니다.');
+            </script>
+            """.formatted(id));
+
+    rq.appendBody("""            
+            <div>
+             <a href="/usr/article/detail/free/%d">수정된 글로 이동</a>
+            </div>
+            """.formatted(id));
   }
 }

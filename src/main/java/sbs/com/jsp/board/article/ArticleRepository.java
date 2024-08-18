@@ -55,4 +55,13 @@ public class ArticleRepository {
 
     datum.remove(article);
   }
+
+  public void modify(long id, String subject, String content) {
+    Article article = findById(id);
+
+    if(article == null) return;
+
+    article.setSubject(subject);
+    article.setContent(content);
+  }
 }
