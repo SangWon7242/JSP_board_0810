@@ -9,10 +9,7 @@
 List<Article> articles = (List<Article>) request.getAttribute("articles");
 %>
 
-<!-- daisy UI 불러오기 -->
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-<!-- 테일윈드 불러오기 -->
-<script src="https://cdn.tailwindcss.com"></script>
+<%@ include file="../common/head.jspf" %>
 
 <section class="article-list-wrap">
   <div class="container mx-auto">
@@ -52,3 +49,5 @@ List<Article> articles = (List<Article>) request.getAttribute("articles");
     </div>
   </div>
 </section>
+
+<%@ include file="../common/foot.jspf" %>

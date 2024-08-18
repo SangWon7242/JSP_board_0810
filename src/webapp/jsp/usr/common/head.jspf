@@ -1,0 +1,76 @@
+<%@ page language = "java" contentType = "text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 모바일에서 디자인이 축소되지 않에 하기 위한 코드 -->
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JSP BOARD</title>
+
+  <!-- 제이쿼리 불러오기 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- daisy UI 불러오기 -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <!-- 테일윈드 불러오기 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 폰트어썸 불러오기 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <!-- 공통 CSS 불러오기 -->
+  <link rel="stylesheet" href="../../../resources/css/style.css">
+</head>
+<body>
+  <header class="top-bar h-[80px] bg-[#afafaf]">
+    <div class="container mx-auto flex h-full">
+      <a href="/usr/article/list" class="flex gap-x-3 px-3 h-full items-center">
+        <span>
+          <i class="fa-solid fa-chess-rook"></i>
+        </span>
+        <span>
+          JSP BOARD
+        </span>
+      </a>
+      <nav class="menu-box-1 ml-auto">
+        <ul class="flex h-full">
+          <li>
+            <a class="flex h-full px-[10px] items-center hover:underline gap-x-3" href="/usr/article/write">
+              <span>
+                <i class="fa-solid fa-pen-to-square"></i>
+              </span>
+              <span>게시물 작성</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex h-full px-[10px] items-center hover:underline gap-x-3" href="/usr/article/list">
+              <span>
+                <i class="fa-solid fa-list"></i>
+              </span>
+              <span>게시물 리스트</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex h-full px-[10px] items-center hover:underline gap-x-3" href="/usr/member/login">
+              <span>
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </span>
+              <span>로그인</span>
+            </a>
+          </li>
+          <li>
+            <a class="flex h-full px-[10px] items-center hover:underline gap-x-3" href="/usr/member/join">
+              <span>
+                <i class="fa-solid fa-user"></i>
+              </span>
+              <span>회원가입</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>

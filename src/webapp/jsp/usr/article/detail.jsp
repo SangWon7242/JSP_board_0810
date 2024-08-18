@@ -6,6 +6,8 @@
 Article article = (Article) request.getAttribute("article");
 %>
 
+<%@ include file="../common/head.jspf" %>
+
 <h1>게시물 상세보기</h1>
 
 <div>
@@ -25,3 +27,5 @@ Article article = (Article) request.getAttribute("article");
 <div>
   <a href="/usr/article/list">리스트로 이동</a>
 </div>
+
+<%@ include file="../common/foot.jspf" %>

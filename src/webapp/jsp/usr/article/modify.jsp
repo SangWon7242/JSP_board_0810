@@ -6,10 +6,7 @@
 Article article = (Article) request.getAttribute("article");
 %>
 
-<!-- daisy UI 불러오기 -->
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-<!-- 테일윈드 불러오기 -->
-<script src="https://cdn.tailwindcss.com"></script>
+<%@ include file="../common/head.jspf" %>
 
 <h1>게시물 수정</h1>
 
@@ -55,3 +52,5 @@ Article article = (Article) request.getAttribute("article");
     <a href="/usr/article/list" class="btn btn-secondary">취소</a>
   </div>
 </form>
+
+<%@ include file="../common/foot.jspf" %>
