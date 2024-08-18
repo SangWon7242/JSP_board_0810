@@ -2,7 +2,6 @@
 
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.stream.IntStream" %>
 
 <%@ page import="sbs.com.jsp.board.article.Article" %>
 
@@ -28,6 +27,7 @@ List<Article> articles = (List<Article>) request.getAttribute("articles");
           <tr>
             <th>ID</th>
             <th>SUBJECT</th>
+            <th>비고</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +39,11 @@ List<Article> articles = (List<Article>) request.getAttribute("articles");
                 <a class="hover:underline hover:text-[red]" href="/usr/article/detail/free/<%=article.getId()%>">
                   <%= article.getSubject()%>
                 </a>
+              </th>
+              <th>
+                <a href="/usr/article/modify/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">수정</a>
+                &nbsp;
+                <a href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">삭제</a>
               </th>
             </tr>
             <% } %>

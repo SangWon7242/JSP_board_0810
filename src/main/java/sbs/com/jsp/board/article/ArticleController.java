@@ -3,7 +3,6 @@ package sbs.com.jsp.board.article;
 import sbs.com.jsp.board.Rq;
 import sbs.com.jsp.board.container.Container;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ArticleController {
