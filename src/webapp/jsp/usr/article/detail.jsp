@@ -1,6 +1,5 @@
 <%@ page language = "java" contentType = "text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%@ page import="sbs.com.jsp.board.article.Article" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
   String pageTitle = "게시물 상세보기";
