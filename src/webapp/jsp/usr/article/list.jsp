@@ -43,7 +43,7 @@ List<Article> articles = (List<Article>) request.getAttribute("articles");
               <th>
                 <a href="/usr/article/modify/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">수정</a>
                 &nbsp;
-                <a href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">삭제</a>
+                <a onclick="if(!confirm('정말 삭제하시겠습니까?')) return false;" href="/usr/article/delete/free/<%=article.getId()%>" class="hover:underline hover:text-[red]">삭제</a>
               </th>
             </tr>
             <% } %>
