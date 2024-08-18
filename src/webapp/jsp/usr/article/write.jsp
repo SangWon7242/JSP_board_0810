@@ -12,7 +12,7 @@
       return;
     }
 
-    form.subject.value = form.subject.value.trim();
+    form.content.value = form.content.value.trim();
 
     if(form.content.value.length == 0) {
       alert('내용을 입력해주세요.');

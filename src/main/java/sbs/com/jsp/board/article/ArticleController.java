@@ -93,4 +93,24 @@ public class ArticleController {
             </div>
             """);
   }
+
+  public void showModify(Rq rq) {
+    long id = rq.getLongPathValueByIndex(1, 0);
+
+    if(id == 0) {
+      rq.appendBody("번호를 입력해주세요.");
+      return;
+    }
+
+    Article article = articleService.findById(id);
+
+    if(article == null) {
+      rq.appendBody("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      return;
+    }
+
+    rq.setAttr("article", article);
+
+    rq.view("usr/article/modify");
+  }
 }
