@@ -6,14 +6,16 @@
 <%@ page import="sbs.com.jsp.board.article.Article" %>
 
 <%
-List<Article> articles = (List<Article>) request.getAttribute("articles");
+  String pageTitle = "게시물 리스트";
+  request.setAttribute("pageTitle", pageTitle);
+
+  List<Article> articles = (List<Article>) request.getAttribute("articles");
 %>
 
 <%@ include file="../common/head.jspf" %>
 
-<section class="article-list-wrap">
+<section class="article-list-wrap mt-[10px]">
   <div class="container mx-auto">
-    <h1 class="font-bold text-lg">게시물 리스트</h1>
     <div>
       <table class="table text-center">
         <colgroup>
