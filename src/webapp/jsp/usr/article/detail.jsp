@@ -5,8 +5,6 @@
 <%
   String pageTitle = "게시물 상세보기";
   request.setAttribute("pageTitle", pageTitle);
-
-  Article article = (Article) request.getAttribute("article");
 %>
 
 <%@ include file="../common/head.jspf" %>
@@ -14,17 +12,15 @@
 <section class="article-detail-wrap mt-[10px]">
   <div class="container mx-auto">
     <div>
-      <% if(article != null) { %>
       <div>
-        ID : <%=article.getId()%>
+        ID : ${article.id}
       </div>
       <div>
-        SUBJECT : <%=article.getSubject()%>
+        SUBJECT : ${article.subject}
       </div>
       <div>
-        CONTENT : <%=article.getContent()%>
+        CONTENT : ${article.content}
       </div>
-      <% } %>
     </div>
 
     <div>

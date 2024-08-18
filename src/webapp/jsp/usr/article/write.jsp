@@ -46,10 +46,9 @@
         </div>
       </div>
 
-      <div>
-        <div>
-          <button type="submit">작성</button>
-        </div>
+      <div class="btn-group mt-3 flex gap-x-3">
+        <button type="submit" class="btn btn-primary">작성</button>
+        <a href="/usr/article/list" class="btn btn-secondary">취소</a>
       </div>
     </form>
   </div>

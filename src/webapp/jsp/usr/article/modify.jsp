@@ -5,8 +5,6 @@
 <%
   String pageTitle = "게시물 수정";
   request.setAttribute("pageTitle", pageTitle);
-
-  Article article = (Article) request.getAttribute("article");
 %>
 
 <%@ include file="../common/head.jspf" %>
@@ -39,14 +37,14 @@
       <div>
         <span class="badge badge-primary badge-outline">제목</span>
         <div class="mt-2">
-          <input class="input input-bordered w-full" name="subject" type="text" placeholder="제목을 입력해주세요." maxlength="50" value="<%=article.getSubject()%>">
+          <input class="input input-bordered w-full" name="subject" type="text" placeholder="제목을 입력해주세요." maxlength="50" value="${article.subject}">
         </div>
       </div>
 
       <div>
         <span  class="badge badge-secondary badge-outline">내용</span>
         <div class="mt-2">
-          <textarea class="textarea textarea-bordered w-full" name="content" cols="30" rows="10" placeholder="내용을 입력해주세요."><%=article.getContent()%></textarea>
+          <textarea class="textarea textarea-bordered w-full" name="content" cols="30" rows="10" placeholder="내용을 입력해주세요.">${article.content}</textarea>
         </div>
       </div>
 
