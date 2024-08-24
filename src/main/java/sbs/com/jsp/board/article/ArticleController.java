@@ -16,7 +16,7 @@ public class ArticleController {
     List<Article> articleList = articleService.findAll();
 
     if(articleList.isEmpty()) {
-      rq.appendBody("게시물이 존재하지 않습니다.");
+      rq.print("게시물이 존재하지 않습니다.");
       return;
     }
 
@@ -46,21 +46,21 @@ public class ArticleController {
 
     long id = articleService.write(subject, content);
 
-    rq.appendBody("<div>%d번 게시물이 등록되었습니다.</div>\n".formatted(id));
+    rq.print("<div>%d번 게시물이 등록되었습니다.</div>\n".formatted(id));
   }
 
   public void showDetail(Rq rq) {
     long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
-      rq.appendBody("올바른 요청이 아닙니다.");
+      rq.print("올바른 요청이 아닙니다.");
       return;
     }
 
     Article article = articleService.findById(id);
 
     if(article == null) {
-      rq.appendBody("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
       return;
     }
 
@@ -73,26 +73,26 @@ public class ArticleController {
     long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
-      rq.appendBody("번호를 입력해주세요.");
+      rq.print("번호를 입력해주세요.");
       return;
     }
 
     Article article = articleService.findById(id);
 
     if(article == null) {
-      rq.appendBody("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
       return;
     }
 
     articleService.delete(id);
 
-    rq.appendBody("""
+    rq.print("""
             <script>
               alert('%d번 게시물이 삭제되었습니다.');
             </script>
             """.formatted(id));
     
-    rq.appendBody("""
+    rq.print("""
             <div>
              <a href="/usr/article/list/free">리스트로 이동</a>
             </div>
@@ -103,14 +103,14 @@ public class ArticleController {
     long id = rq.getLongPathValueByIndex(1, 0);
 
     if(id == 0) {
-      rq.appendBody("번호를 입력해주세요.");
+      rq.print("번호를 입력해주세요.");
       return;
     }
 
     Article article = articleService.findById(id);
 
     if(article == null) {
-      rq.appendBody("%d번 게시물은 존재하지 않습니다.".formatted(id));
+      rq.print("%d번 게시물은 존재하지 않습니다.".formatted(id));
       return;
     }
 
@@ -138,13 +138,13 @@ public class ArticleController {
 
     articleService.modify(id, subject, content);
 
-    rq.appendBody("""
+    rq.print("""
             <script>
               alert('%d번 게시물이 수정되었습니다.');
             </script>
             """.formatted(id));
 
-    rq.appendBody("""            
+    rq.print("""            
             <div>
              <a href="/usr/article/detail/free/%d">수정된 글로 이동</a>
             </div>
