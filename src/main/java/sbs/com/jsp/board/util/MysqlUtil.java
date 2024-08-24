@@ -111,7 +111,7 @@ public class MysqlUtil {
                     Object value = rs.getObject(columnName);
 
                     if (value instanceof Long) {
-                        long numValue = (int) (long) value;
+                        int numValue = (int) (long) value;
                         row.put(columnName, numValue);
                     } else if (value instanceof Timestamp) {
                         String dateValue = value.toString();
