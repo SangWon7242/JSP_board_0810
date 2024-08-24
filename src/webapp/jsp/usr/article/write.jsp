@@ -34,16 +34,16 @@
   <div class="container mx-auto">
     <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
       <div>
-        <span>제목</span>
-        <div>
-          <input name="subject" type="text" placeholder="제목을 입력해주세요." maxlength="50">
+        <span class="badge badge-primary badge-outline">제목</span>
+        <div class="mt-2">
+          <input class="input input-bordered w-full" name="subject" type="text" placeholder="제목을 입력해주세요." maxlength="50">
         </div>
       </div>
 
-      <div>
-        <span>내용</span>
-        <div>
-          <textarea name="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+      <div class="mt-2">
+        <span class="badge badge-secondary badge-outline">내용</span>
+        <div class="mt-2">
+          <textarea class="textarea textarea-bordered w-full" name="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
         </div>
       </div>
 
