@@ -1,67 +1,73 @@
 package sbs.com.jsp.board.article;
 
+import sbs.com.jsp.board.util.MysqlUtil;
+import sbs.com.jsp.board.util.SecSql;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Map;
 
 public class ArticleRepository {
-  private static List<Article> datum;
-  private static long lastId;
-
-  static {
-    datum = new ArrayList<>();
-    lastId = 0;
-
-    makeTestData();
-  }
-
-  public static void makeTestData() {
-    IntStream.rangeClosed(1, 10).forEach(id -> {
-      String subject = "제목%d".formatted(id);
-      String content = "내용%d".formatted(id);
-
-      write(subject, content);
-    });
-  }
-
   public static List<Article> findAll() {
-    return datum;
+    SecSql sql = new SecSql();
+    sql.append("SELECT *");
+    sql.append("FROM article");
+    sql.append("ORDER BY id DESC;");
+
+    List<Map<String, Object>> articlesMap = MysqlUtil.selectRows(sql);
+
+    List<Article> articles = new ArrayList<>();
+
+    for(Map<String, Object> articleMap : articlesMap) {
+      articles.add(new Article(articleMap));
+    }
+
+    return articles;
   }
 
   public static long write(String subject, String content) {
-    long id = ++lastId;
+    SecSql sql = new SecSql();
+    sql.append("INSERT INTO article");
+    sql.append("SET regDate = NOW()");
+    sql.append(", updateDate = NOW()");
+    sql.append(", `subject` = ?", subject);
+    sql.append(", content = ?", content);
 
-    Article article = new Article(id, subject, content);
-
-    datum.add(article);
+    int id = MysqlUtil.insert(sql);
 
     return id;
   }
 
   public static Article findById(long id) {
-    for(Article article : datum) {
-      if(article.getId() == id) {
-        return article;
-      }
-    }
+    SecSql sql = new SecSql();
+    sql.append("SELECT *");
+    sql.append("FROM article");
+    sql.append("WHERE id = ?", id);
 
-    return null;
+    Map<String, Object> articleMap = MysqlUtil.selectRow(sql);
+
+    if(articleMap.isEmpty()) return null;
+
+    return new Article(articleMap);
   }
 
   public void delete(long id) {
-    Article article = findById(id);
+    SecSql sql = new SecSql();
+    sql.append("DELETE");
+    sql.append("FROM article");
+    sql.append("WHERE id = ?", id);
 
-    if(article == null) return;
-
-    datum.remove(article);
+    MysqlUtil.delete(sql);
   }
 
   public void modify(long id, String subject, String content) {
-    Article article = findById(id);
+    SecSql sql = new SecSql();
+    sql.append("UPDATE article");
+    sql.append("SET updateDate = NOW()");
+    sql.append(", `subject` = ?", subject);
+    sql.append(", content = ?", content);
+    sql.append("WHERE id = ?", id);
 
-    if(article == null) return;
-
-    article.setSubject(subject);
-    article.setContent(content);
+    MysqlUtil.update(sql);
   }
 }
